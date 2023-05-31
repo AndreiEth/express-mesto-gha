@@ -13,6 +13,8 @@ module.exports.getUsers = (req, res) => {
 
 module.exports.getUserById = (req, res) => {
   const { userId } = req.params;
+  // eslint-disable-next-line no-console
+  console.log(userId);
 
   userSchema
     .findById(userId)
@@ -39,6 +41,8 @@ module.exports.getUserById = (req, res) => {
 
 module.exports.createUser = (req, res) => {
   const { name, about, avatar } = req.body;
+  // eslint-disable-next-line no-console
+  console.log(req.body);
 
   userSchema
     .create({

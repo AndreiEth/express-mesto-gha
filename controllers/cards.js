@@ -42,14 +42,14 @@ module.exports.deleteCard = (req, res) => {
     });
 };
 
-module.exports.cresteCard = (req, res) => {
+module.exports.createCard = (req, res) => {
   // eslint-disable-next-line no-console
   console.log(req.user._id);
   const { name, link } = req.body;
   const owner = req.user._id;
 
   cardSchema
-    .creste({
+    .create({
       name,
       link,
       owner,
