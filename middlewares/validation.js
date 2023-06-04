@@ -7,12 +7,6 @@ const urlValidation = (url) => {
   throw new BadRequestError('Incorrect URL');
 };
 
-const IdValidation = (id) => {
-  const regex = /^[0-9a-fA-F]{24}$/;
-  if (regex.test(id)) return id;
-  throw new BadRequestError('Incorrect id');
-};
-
 module.exports.createUserValidation = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
@@ -58,6 +52,6 @@ module.exports.createCardValidation = celebrate({
 
 module.exports.userIdValidation = celebrate({
   params: Joi.object().keys({
-    userId: Joi.string().required().custom(IdValidation),
+    userId: Joi.string().length(24).hex().required(),
   }),
 });

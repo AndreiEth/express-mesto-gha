@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const router = require('./routes/router');
-const auth = require('./middlewares/auth');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -14,7 +13,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(auth);
 app.use(router);
 app.use(errors());
 
